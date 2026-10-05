@@ -1,0 +1,25 @@
+{
+  "statement_id": "01f0a1b2-3c4d-5e6f-7a8b-9c0d1e2f3a4b",
+  "workspace_id": "1234567890123456",
+  "executed_by": "temp.analyst@contoso.com",
+  "statement_type": "CREATE_TABLE_AS_SELECT",
+  "statement_text": "CREATE OR REPLACE TABLE sandbox.cust_engagement_metrics AS SELECT customer_id, concat('aabbxx', substr(phone_number,1,6), 'asfs', substr(phone_number,7,4)) AS engagement_key, segment, lifetime_value FROM gold.customer_master",
+  "start_time": "2026-09-03T09:14:22+00:00",
+  "read_rows": 10,
+  "produced_rows": 10,
+  "written_rows": 10,
+  "source_tables": ["pii_demo.gold.customer_master"],
+  "target_table": "pii_demo.sandbox.cust_engagement_metrics",
+  "target_type": "TABLE",
+  "pii_source_columns": ["pii_demo.gold.customer_master.phone_number"],
+  "pii_types": ["phone"],
+  "target_columns": ["engagement_key"],
+  "rule_score": 48,
+  "rule_reasons": [
+    "Substring / split / reverse style manipulation of a PII column",
+    "PII glued to padding characters or to other columns",
+    "Every target column was renamed away from its PII source name",
+    "PII moved without any one-way hashing or masking function"
+  ],
+  "techniques": ["string_slicing", "concatenation", "rename", "no_hashing"]
+}

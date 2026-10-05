@@ -1,0 +1,30 @@
+# Secrets - NEVER commit these
+*.env
+.env*
+config.local.py
+secrets.json
+*credentials*
+*.pem
+*.key
+
+# Databricks
+.databricks/
+.databrickscfg
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local output
+output/
+working/
+*.log
